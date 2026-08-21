@@ -1,7 +1,3 @@
-/* ================================================================
-   BAZAN & CO. — Main JavaScript
-   Modular • Clean • No Dependencies
-   ================================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
   initRevealAnimations();
@@ -12,14 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initContactForm();
   initWhatsAppButton();
+  initCookieBanner();
+  initPrivacyModal();
 });
 
 
-/* ----------------------------------------------------------------
-   1. REVEAL ON SCROLL (IntersectionObserver)
-   Triggers fade-in + slide-up for .reveal and .reveal-child elements.
-   Children within the same parent are staggered by 150ms each.
-   ---------------------------------------------------------------- */
 function initRevealAnimations() {
   const observerOptions = {
     threshold: 0.1,
@@ -31,7 +24,6 @@ function initRevealAnimations() {
       if (!entry.isIntersecting) return;
 
       if (entry.target.classList.contains('reveal-child')) {
-        // Stagger siblings for sequential reveal
         const parent = entry.target.parentElement;
         const siblings = parent.querySelectorAll('.reveal-child');
         const idx = Array.from(siblings).indexOf(entry.target);
@@ -52,10 +44,6 @@ function initRevealAnimations() {
 }
 
 
-/* ----------------------------------------------------------------
-   2. FLOATING PARTICLES (Hero Section)
-   Creates subtle gold-tinted circles that float upward infinitely.
-   ---------------------------------------------------------------- */
 function initParticles() {
   const container = document.getElementById('particles');
   if (!container) return;
@@ -79,11 +67,6 @@ function initParticles() {
 }
 
 
-/* ----------------------------------------------------------------
-   3. COUNTER ANIMATION
-   Animates stat numbers from 0 to their data-target value
-   using an ease-out cubic curve over 2 seconds.
-   ---------------------------------------------------------------- */
 function initCounterAnimation() {
   const statElements = document.querySelectorAll('.stat__number[data-target]');
   if (!statElements.length) return;
@@ -97,7 +80,6 @@ function initCounterAnimation() {
     });
   }, { threshold: 0.5 });
 
-  // Observe the stats container (parent of first stat)
   const statsContainer = statElements[0].closest('.hero__stats');
   if (statsContainer) {
     observer.observe(statsContainer);
@@ -114,7 +96,6 @@ function animateAllCounters(elements) {
     function update(currentTime) {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease-out cubic for smooth deceleration
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(eased * target);
 
@@ -130,10 +111,6 @@ function animateAllCounters(elements) {
 }
 
 
-/* ----------------------------------------------------------------
-   4. MOBILE MENU TOGGLE
-   Handles hamburger button click, icon swap, and link auto-close.
-   ---------------------------------------------------------------- */
 function initMobileMenu() {
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -149,7 +126,6 @@ function initMobileMenu() {
     menuBtn.setAttribute('aria-expanded', isOpen);
   });
 
-  // Close menu when a link is clicked
   mobileMenu.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       mobileMenu.classList.remove('is-open');
@@ -161,10 +137,6 @@ function initMobileMenu() {
 }
 
 
-/* ----------------------------------------------------------------
-   5. NAVBAR SCROLL BEHAVIOR
-   Adds a visual "scrolled" state when user scrolls past 80px.
-   ---------------------------------------------------------------- */
 function initNavbarScroll() {
   const navbar = document.getElementById('navbar');
   if (!navbar) return;
@@ -187,11 +159,6 @@ function initNavbarScroll() {
 }
 
 
-/* ----------------------------------------------------------------
-   6. SMOOTH SCROLL
-   Intercepts anchor links for native-smooth scrolling behavior,
-   accounting for the fixed navbar height.
-   ---------------------------------------------------------------- */
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
@@ -213,11 +180,6 @@ function initSmoothScroll() {
 }
 
 
-/* ----------------------------------------------------------------
-   7. CONTACT FORM (Google Forms Integration)
-   Sends form data to Google Forms via no-cors fetch,
-   shows a success state on completion.
-   ---------------------------------------------------------------- */
 function initContactForm() {
   const form = document.getElementById('contact-form');
   const submitBtn = document.getElementById('submit-btn');
@@ -225,7 +187,6 @@ function initContactForm() {
 
   if (!form || !submitBtn) return;
 
-  // Google Forms endpoint and entry IDs
   const GOOGLE_FORM_URL = 'https://docs.google.com/forms/u/0/d/1ihBrpBzapDpQGtarTRNpLzeK0KEvMLZJlrN3gcMbx_M/formResponse';
   const ENTRIES = {
     name: 'entry.1439802834',
@@ -237,7 +198,6 @@ function initContactForm() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Show loading state
     submitBtn.disabled = true;
     const originalContent = submitBtn.innerHTML;
     submitBtn.innerHTML = `
@@ -248,14 +208,12 @@ function initContactForm() {
       Enviando...
     `;
 
-    // Build URL-encoded form data
     const formData = new URLSearchParams();
     formData.append(ENTRIES.name, document.getElementById('name').value);
     formData.append(ENTRIES.email, document.getElementById('email').value);
     formData.append(ENTRIES.service, document.getElementById('service').value);
     formData.append(ENTRIES.message, document.getElementById('message').value);
 
-    // Submit via no-cors (always resolves as opaque)
     fetch(GOOGLE_FORM_URL, {
       method: 'POST',
       mode: 'no-cors',
@@ -263,7 +221,6 @@ function initContactForm() {
       body: formData.toString()
     })
       .then(() => {
-        // Hide form fields, show success
         form.querySelectorAll('.form__group, .form__grid').forEach((el) => {
           el.style.display = 'none';
         });
@@ -279,10 +236,6 @@ function initContactForm() {
 }
 
 
-/* ----------------------------------------------------------------
-   8. WHATSAPP FLOATING BUTTON
-   Shows the WhatsApp FAB after the user scrolls past 400px.
-   ---------------------------------------------------------------- */
 function initWhatsAppButton() {
   const fab = document.getElementById('whatsapp-fab');
   if (!fab) return;
@@ -296,6 +249,67 @@ function initWhatsAppButton() {
     } else if (window.scrollY <= 400 && visible) {
       fab.classList.remove('is-visible');
       visible = false;
+    }
+  });
+}
+
+
+function initCookieBanner() {
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('accept-cookies-btn');
+  
+  if (!banner || !acceptBtn) return;
+  
+  if (!localStorage.getItem('cookiesAccepted')) {
+    setTimeout(() => {
+      banner.classList.add('is-visible');
+      banner.setAttribute('aria-hidden', 'false');
+    }, 500);
+  }
+  
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    banner.classList.remove('is-visible');
+    banner.setAttribute('aria-hidden', 'true');
+    
+    setTimeout(() => {
+      banner.style.display = 'none';
+    }, 300);
+  });
+}
+
+
+function initPrivacyModal() {
+  const modal = document.getElementById('privacy-modal');
+  const openLink = document.getElementById('open-privacy-link');
+  const closeBtn = document.getElementById('close-privacy-btn');
+  const modalContent = modal?.querySelector('.privacy-modal__content');
+  
+  if (!modal || !openLink || !closeBtn) return;
+  
+  const openModal = (e) => {
+    e.preventDefault();
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  };
+  
+  const closeModal = () => {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  };
+  
+  openLink.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  
+  modal.addEventListener('click', (e) => {
+    if (modalContent && !modalContent.contains(e.target)) {
+      closeModal();
+    }
+  });
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
     }
   });
 }

@@ -1,55 +1,37 @@
-/* ================================================================
-   BAZAN & CO. — Dark Luxury Design System
-   Pure CSS • No frameworks • Mobile-First
-   ================================================================ */
 
-/* ----------------------------------------------------------------
-   1. GOOGLE FONTS
-   ---------------------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* ----------------------------------------------------------------
-   2. CUSTOM PROPERTIES (Design Tokens)
-   ---------------------------------------------------------------- */
 :root {
-  /* — Backgrounds — */
   --bg-base: #0a0a0c;
   --bg-surface: #16161a;
   --bg-elevated: #1e1e24;
   --bg-hover: #25252d;
 
-  /* — Text — */
   --text-primary: #f4f4f6;
   --text-secondary: #9496a1;
   --text-muted: #5c5e6a;
   --text-inverse: #0a0a0c;
 
-  /* — Accent (Premium Gold) — */
   --accent: #c8a44e;
   --accent-light: #e2c97e;
   --accent-dark: #a8883a;
   --accent-glow: rgba(200, 164, 78, 0.15);
   --accent-glow-strong: rgba(200, 164, 78, 0.35);
 
-  /* — Borders — */
   --border: rgba(255, 255, 255, 0.08);
   --border-hover: rgba(255, 255, 255, 0.14);
 
-  /* — Glass — */
   --glass-bg: rgba(22, 22, 26, 0.72);
   --glass-blur: blur(16px) saturate(180%);
 
-  /* — Shadows — */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.45);
   --shadow-glow: 0 8px 30px var(--accent-glow-strong);
 
-  /* — Typography — */
   --font-heading: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 
-  /* — Spacing Scale — */
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
   --space-md: 1rem;
@@ -60,7 +42,6 @@
   --space-4xl: 6rem;
   --space-5xl: 8rem;
 
-  /* — Border Radius — */
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
@@ -68,14 +49,12 @@
   --radius-2xl: 1.5rem;
   --radius-full: 9999px;
 
-  /* — Transitions — */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --duration-fast: 200ms;
   --duration-normal: 300ms;
   --duration-slow: 600ms;
 
-  /* — Layout — */
   --max-width: 1200px;
   --nav-height: 4rem;
 }
@@ -87,9 +66,6 @@
 }
 
 
-/* ----------------------------------------------------------------
-   3. CSS RESET & BASE
-   ---------------------------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -153,9 +129,6 @@ address {
 }
 
 
-/* ----------------------------------------------------------------
-   4. TYPOGRAPHY
-   ---------------------------------------------------------------- */
 h1,
 h2,
 h3,
@@ -195,9 +168,6 @@ p {
 }
 
 
-/* ----------------------------------------------------------------
-   5. LAYOUT UTILITIES
-   ---------------------------------------------------------------- */
 .container {
   width: 100%;
   max-width: var(--max-width);
@@ -229,7 +199,6 @@ p {
   }
 }
 
-/* Section header (eyebrow pattern) */
 .section-eyebrow {
   display: flex;
   align-items: center;
@@ -280,9 +249,6 @@ p {
 }
 
 
-/* ----------------------------------------------------------------
-   6. NAVBAR
-   ---------------------------------------------------------------- */
 .navbar {
   position: fixed;
   top: 0;
@@ -309,7 +275,6 @@ p {
   height: var(--nav-height);
 }
 
-/* Logo */
 .navbar__logo {
   display: flex;
   align-items: center;
@@ -350,7 +315,6 @@ p {
   color: var(--accent);
 }
 
-/* Desktop links */
 .navbar__links {
   display: none;
   align-items: center;
@@ -389,7 +353,6 @@ p {
   width: 100%;
 }
 
-/* Mobile menu button */
 .navbar__mobile-btn {
   display: flex;
   align-items: center;
@@ -415,7 +378,6 @@ p {
   height: 1.5rem;
 }
 
-/* Mobile menu panel */
 .navbar__mobile-menu {
   display: none;
   flex-direction: column;
@@ -446,9 +408,6 @@ p {
 }
 
 
-/* ----------------------------------------------------------------
-   7. BUTTONS
-   ---------------------------------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -470,7 +429,6 @@ p {
   flex-shrink: 0;
 }
 
-/* Primary CTA */
 .btn--primary {
   padding: 0.875rem 2rem;
   background: linear-gradient(135deg, var(--accent-light), var(--accent-dark));
@@ -504,7 +462,6 @@ p {
   box-shadow: var(--shadow-glow);
 }
 
-/* Secondary / Outline */
 .btn--secondary {
   padding: 0.875rem 2rem;
   background: transparent;
@@ -521,18 +478,13 @@ p {
   transform: translateY(-2px);
 }
 
-/* Small CTA (navbar) */
 .btn--sm {
   padding: 0.625rem 1.25rem;
   font-size: 0.8125rem;
 }
 
 
-/* ----------------------------------------------------------------
-   8. CARDS
-   ---------------------------------------------------------------- */
 
-/* --- Service Card --- */
 .card {
   position: relative;
   background: var(--glass-bg);
@@ -622,7 +574,6 @@ p {
   flex-shrink: 0;
 }
 
-/* --- Portfolio Card --- */
 .portfolio-card {
   position: relative;
   border-radius: var(--radius-2xl);
@@ -721,9 +672,6 @@ p {
 }
 
 
-/* ----------------------------------------------------------------
-   9. HERO SECTION
-   ---------------------------------------------------------------- */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -733,7 +681,6 @@ p {
   padding-bottom: var(--space-3xl);
 }
 
-/* Subtle grid background */
 .hero__grid-bg {
   position: absolute;
   inset: 0;
@@ -744,7 +691,6 @@ p {
   pointer-events: none;
 }
 
-/* Radial glow */
 .hero__glow {
   position: absolute;
   top: 50%;
@@ -758,7 +704,6 @@ p {
   pointer-events: none;
 }
 
-/* Gradient overlay */
 .hero__gradient {
   position: absolute;
   inset: 0;
@@ -800,7 +745,6 @@ p {
   }
 }
 
-/* Stats bar */
 .hero__stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -835,9 +779,6 @@ p {
 }
 
 
-/* ----------------------------------------------------------------
-   10. ABOUT / NOSOTROS SECTION
-   ---------------------------------------------------------------- */
 .about__grid {
   display: grid;
   gap: var(--space-2xl);
@@ -876,9 +817,6 @@ p {
 }
 
 
-/* ----------------------------------------------------------------
-   11. SERVICES GRID
-   ---------------------------------------------------------------- */
 .services-grid {
   display: grid;
   gap: var(--space-lg);
@@ -900,9 +838,6 @@ p {
 }
 
 
-/* ----------------------------------------------------------------
-   12. PORTFOLIO GRID
-   ---------------------------------------------------------------- */
 .portfolio-grid {
   display: grid;
   gap: var(--space-lg);
@@ -915,9 +850,6 @@ p {
 }
 
 
-/* ----------------------------------------------------------------
-   13. VALUE PROPOSITIONS
-   ---------------------------------------------------------------- */
 .value-grid {
   display: grid;
   gap: var(--space-lg);
@@ -977,9 +909,6 @@ p {
 }
 
 
-/* ----------------------------------------------------------------
-   14. CTA BANNER
-   ---------------------------------------------------------------- */
 .cta-banner {
   position: relative;
   background: linear-gradient(135deg, var(--bg-elevated), var(--bg-surface));
@@ -1036,9 +965,6 @@ p {
 }
 
 
-/* ----------------------------------------------------------------
-   15. CONTACT SECTION
-   ---------------------------------------------------------------- */
 .contact-grid {
   display: grid;
   gap: var(--space-2xl);
@@ -1098,7 +1024,6 @@ a.contact-info__value:hover {
   color: var(--accent);
 }
 
-/* Form */
 .form {
   background: var(--glass-bg);
   border: 1px solid var(--border);
@@ -1215,9 +1140,6 @@ a.contact-info__value:hover {
 }
 
 
-/* ----------------------------------------------------------------
-   16. WHATSAPP FAB
-   ---------------------------------------------------------------- */
 .whatsapp-fab {
   position: fixed;
   bottom: 1.5rem;
@@ -1253,7 +1175,6 @@ a.contact-info__value:hover {
   fill: #fff;
 }
 
-/* Pulse ring */
 .whatsapp-fab::before {
   content: '';
   position: absolute;
@@ -1276,9 +1197,6 @@ a.contact-info__value:hover {
 }
 
 
-/* ----------------------------------------------------------------
-   17. FOOTER
-   ---------------------------------------------------------------- */
 .footer {
   border-top: 1px solid var(--border);
   padding-block: var(--space-xl);
@@ -1320,9 +1238,6 @@ a.contact-info__value:hover {
 }
 
 
-/* ----------------------------------------------------------------
-   18. GLOW DIVIDER
-   ---------------------------------------------------------------- */
 .glow-divider {
   border: none;
   height: 2px;
@@ -1333,11 +1248,7 @@ a.contact-info__value:hover {
 }
 
 
-/* ----------------------------------------------------------------
-   19. DECORATIVE ELEMENTS
-   ---------------------------------------------------------------- */
 
-/* Background glow blobs */
 .bg-glow {
   position: absolute;
   border-radius: 50%;
@@ -1349,7 +1260,6 @@ a.contact-info__value:hover {
   background: rgba(200, 164, 78, 0.03);
 }
 
-/* Floating particles */
 .particle {
   position: absolute;
   border-radius: 50%;
@@ -1379,9 +1289,6 @@ a.contact-info__value:hover {
 }
 
 
-/* ----------------------------------------------------------------
-   20. REVEAL ANIMATIONS
-   ---------------------------------------------------------------- */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -1407,9 +1314,6 @@ a.contact-info__value:hover {
 }
 
 
-/* ----------------------------------------------------------------
-   21. CUSTOM SCROLLBAR
-   ---------------------------------------------------------------- */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -1428,9 +1332,6 @@ a.contact-info__value:hover {
 }
 
 
-/* ----------------------------------------------------------------
-   22. UTILITY CLASSES
-   ---------------------------------------------------------------- */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1459,4 +1360,133 @@ a.contact-info__value:hover {
   to {
     transform: rotate(360deg);
   }
+}
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  text-align: center;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform var(--duration-normal) var(--ease-out),
+              opacity var(--duration-normal) var(--ease-out);
+}
+
+.cookie-banner.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.cookie-banner__text {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .cookie-banner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    padding: var(--space-md) var(--space-2xl);
+  }
+}
+
+.privacy-modal {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-normal) var(--ease-out),
+              visibility var(--duration-normal) var(--ease-out);
+}
+
+.privacy-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.privacy-modal__content {
+  background: #111115;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(20px) scale(0.95);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.privacy-modal.is-open .privacy-modal__content {
+  transform: translateY(0) scale(1);
+}
+
+.privacy-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--border);
+}
+
+.privacy-modal__title {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.privacy-modal__close {
+  color: var(--text-secondary);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: background var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.privacy-modal__close:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.privacy-modal__close svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.privacy-modal__body {
+  padding: var(--space-lg);
+  overflow-y: auto;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.7;
 }
