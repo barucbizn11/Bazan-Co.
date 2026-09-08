@@ -78,6 +78,7 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -679,6 +680,8 @@ p {
   align-items: center;
   padding-top: calc(var(--nav-height) + var(--space-3xl));
   padding-bottom: var(--space-3xl);
+  overflow: hidden;
+  contain: paint;
 }
 
 .hero__grid-bg {
@@ -914,7 +917,7 @@ p {
   background: linear-gradient(135deg, var(--bg-elevated), var(--bg-surface));
   border: 1px solid var(--border);
   border-radius: var(--radius-2xl);
-  padding: var(--space-2xl);
+  padding: var(--space-2xl) var(--space-lg);
   text-align: center;
   overflow: hidden;
 }
@@ -962,6 +965,24 @@ p {
   margin-inline: auto;
   margin-bottom: var(--space-xl);
   line-height: 1.7;
+}
+
+.cta-banner .btn {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  padding-inline: var(--space-md);
+  white-space: normal;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .cta-banner .btn {
+    display: inline-flex;
+    width: auto;
+    padding-inline: 2rem;
+    white-space: nowrap;
+  }
 }
 
 
@@ -1218,8 +1239,10 @@ a.contact-info__value:hover {
 
 .footer__links {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-xl);
+  justify-content: center;
+  gap: var(--space-xs) var(--space-xl);
 }
 
 .footer__link {
